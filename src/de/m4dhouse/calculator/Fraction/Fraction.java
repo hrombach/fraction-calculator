@@ -31,6 +31,20 @@ public class Fraction {
         return this.numerator + "/" + this.denominator;
     }
 
+
+    public Fraction mul(Fraction f2) throws ZeroDenominatorException {
+        return new Fraction(this.getNumerator() * f2.getNumerator(), this.getDenominator() * f2.getDenominator());
+    }
+    public Fraction div(Fraction f2) throws ZeroDenominatorException {
+        return new Fraction(this.getNumerator() * f2.getDenominator(), this.getDenominator() * f2.getNumerator());
+    }
+
+    public Fraction add(Fraction f2) throws ZeroDenominatorException {
+        return new Fraction((this.getDenominator() * f2.getNumerator() + f2.getDenominator() *
+                this.getNumerator()), (this.getNumerator() * f2.getNumerator()));
+    }
+    
+
     public int getDenominator() {
         return denominator;
     }
