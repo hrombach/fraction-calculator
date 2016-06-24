@@ -67,6 +67,16 @@ public class FractionTest {
     }
 
     @Test
+    public void sub() throws Exception {
+        Fraction testFraction1 = new Fraction(2, 6);
+        Fraction testFraction2 = new Fraction(1, 4);
+
+        Fraction resultFraction = testFraction1.sub(testFraction2);
+
+        assertEquals("1/12", resultFraction.toString());
+    }
+
+    @Test
     public void display() throws Exception {
         Fraction testFraction = new Fraction(5, 4);
         testFraction.display();
