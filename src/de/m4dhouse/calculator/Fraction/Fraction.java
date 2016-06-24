@@ -1,7 +1,7 @@
-package de.m4dhouse.calculator.Fraction;
+package de.m4dhouse.calculator.fraction;
 
 /**
- * This file is part of de.m4dhouse.calculator.Fraction, included in g18.AE03.java.calculator.
+ * This file is part of de.m4dhouse.calculator.fraction, included in g18.AE03.java.calculator.
  * Created by hromb on 6/24/2016.
  * It is licensed under the GNU General Public License
  */
@@ -31,7 +31,6 @@ public class Fraction {
         return this.numerator + "/" + this.denominator;
     }
 
-
     public Fraction mul(Fraction f2) throws ZeroDenominatorException {
         Fraction result = new Fraction(
                 this.getNumerator() * f2.getNumerator(),
@@ -39,6 +38,7 @@ public class Fraction {
         );
         return result.simplify();
     }
+
     public Fraction div(Fraction f2) throws ZeroDenominatorException {
         Fraction result = new Fraction(
                 this.getNumerator() * f2.getDenominator(),
@@ -48,8 +48,9 @@ public class Fraction {
     }
 
     public Fraction add(Fraction f2) throws ZeroDenominatorException {
-        Fraction result = new Fraction((this.getDenominator() * f2.getNumerator() + f2.getDenominator() *
-                this.getNumerator()), (this.getNumerator() * f2.getNumerator()));
+        Fraction result = new Fraction(
+                (this.getNumerator() * f2.getDenominator() + f2.getNumerator() * this.getDenominator()),
+                (this.getDenominator() * f2.getDenominator()));
         return result.simplify();
     }
 
@@ -66,7 +67,6 @@ public class Fraction {
         if (b == 0) return a;
         return GCD(b, a % b);
     }
-    
 
     public int getDenominator() {
         return denominator;

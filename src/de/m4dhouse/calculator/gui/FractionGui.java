@@ -4,7 +4,7 @@ import java.awt.*;
 
 /**
  * project     fraction-calculator
- * package     de.m4dhouse.calculator.Fraction
+ * package     de.m4dhouse.calculator.fraction
  * copyright   (C) Fabian Lehmann 2016
  * version     1.0.0
  * author      Fabian Lehmann <fabian.lehmann@gmail.com>
@@ -15,7 +15,7 @@ public class FractionGui {
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(new Dimension(800, 600));
-        frame.setTitle("Fraction Calculator");
+        frame.setTitle("fraction Calculator");
 
         JPanel panel = new JPanel();
 

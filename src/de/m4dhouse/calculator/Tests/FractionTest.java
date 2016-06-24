@@ -1,15 +1,16 @@
-package de.m4dhouse.calculator.Tests;
+package de.m4dhouse.calculator.tests;
 
-import de.m4dhouse.calculator.Fraction.Fraction;
+import de.m4dhouse.calculator.fraction.Fraction;
+import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Project: fraction-calculator
- * Package: de.m4dhouse.calculator.Tests
+ * Package: de.m4dhouse.calculator.tests
  * Copyright: Hendrik Rombach, 2016
  */
 public class FractionTest {
@@ -28,7 +29,44 @@ public class FractionTest {
         System.setOut(null);
     }
 
-    @org.junit.Test
+    @Test
+    public void mul() throws Exception {
+        Fraction testFraction1 = new Fraction(2, 5);
+        Fraction testFraction2 = new Fraction(4, 3);
+
+        Fraction resultFraction = testFraction1.mul(testFraction2);
+
+        assertEquals(new Fraction(8, 15).toString(), resultFraction.toString());
+    }
+
+    @Test
+    public void div() throws Exception {
+        Fraction testFraction2 = new Fraction(6, 12);
+        Fraction testFraction1 = new Fraction(2, 3);
+
+        Fraction resultFraction = testFraction1.div(testFraction2);
+
+        assertEquals("4/3", resultFraction.toString());
+    }
+
+    @Test
+    public void simplify() throws Exception {
+        Fraction testFraction = new Fraction(86, 360);
+
+        assertEquals("43/180", testFraction.simplify().toString());
+    }
+
+    @Test
+    public void add() throws Exception {
+        Fraction testFraction1 = new Fraction(2, 6);
+        Fraction testFraction2 = new Fraction(1, 4);
+
+        Fraction resultFraction = testFraction1.add(testFraction2);
+
+        assertEquals("7/12", resultFraction.toString());
+    }
+
+    @Test
     public void display() throws Exception {
         Fraction testFraction = new Fraction(5, 4);
         testFraction.display();
@@ -36,42 +74,42 @@ public class FractionTest {
         assertEquals("5/4\r\n", outContent.toString());
     }
 
-    @org.junit.Test
+    @Test
     public void testToString() throws Exception {
         Fraction testFraction = new Fraction(5, 4);
         String fractionString = testFraction.toString();
 
-        assertEquals("Franction(5,4) should be printed as \"5/4\"" ,"5/4", fractionString);
+        assertEquals("Franction(5,4) should be printed as \"5/4\"", "5/4", fractionString);
     }
 
-    @org.junit.Test
+    @Test
     public void getDenominator() throws Exception {
         Fraction testFraction = new Fraction(5, 4);
 
         assertEquals("getDenominator() should return int(4)", 4, testFraction.getDenominator());
     }
 
-    @org.junit.Test
+    @Test
     public void setDenominator() throws Exception {
         Fraction testFraction = new Fraction();
         try {
             testFraction.setDenominator(0);
         } catch (Exception e) {
-            assertEquals("Fraction denominator cannot be 0.", e.getMessage());
+            assertEquals("fraction denominator cannot be 0.", e.getMessage());
         }
 
         testFraction.setDenominator(5);
         assertEquals("Denominator should now be int(5)", 5, testFraction.getDenominator());
     }
 
-    @org.junit.Test
+    @Test
     public void getNumerator() throws Exception {
         Fraction testFraction = new Fraction(4, 3);
 
         assertEquals("getNumberator should return int(4)", 4, testFraction.getNumerator());
     }
 
-    @org.junit.Test
+    @Test
     public void setNumerator() throws Exception {
         Fraction testFraction = new Fraction();
         testFraction.setNumerator(5);

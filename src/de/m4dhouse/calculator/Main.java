@@ -1,6 +1,6 @@
 package de.m4dhouse.calculator;
 
-import de.m4dhouse.calculator.Fraction.Fraction;
+import de.m4dhouse.calculator.fraction.Fraction;
 
 public class Main {
 
