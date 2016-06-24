@@ -41,12 +41,12 @@ public class FractionTest {
 
     @Test
     public void div() throws Exception {
-        Fraction testFraction2 = new Fraction(6, 12);
-        Fraction testFraction1 = new Fraction(2, 3);
+        Fraction testFraction2 = new Fraction(2, 6);
+        Fraction testFraction1 = new Fraction(1, 4);
 
         Fraction resultFraction = testFraction1.div(testFraction2);
 
-        assertEquals("4/3", resultFraction.toString());
+        assertEquals("1 1/3", resultFraction.toString());
     }
 
     @Test
@@ -78,18 +78,21 @@ public class FractionTest {
 
     @Test
     public void display() throws Exception {
-        Fraction testFraction = new Fraction(5, 4);
+        Fraction testFraction = new Fraction(4, 6);
         testFraction.display();
 
-        assertEquals("5/4\r\n", outContent.toString());
+        assertEquals("4/6\r\n", outContent.toString());
     }
 
     @Test
     public void testToString() throws Exception {
-        Fraction testFraction = new Fraction(5, 4);
-        String fractionString = testFraction.toString();
+        Fraction testFraction = new Fraction(3, 4);
 
-        assertEquals("Franction(5,4) should be printed as \"5/4\"", "5/4", fractionString);
+        assertEquals("Franction(3,4) should be printed as \"3/4\"", "3/4", testFraction.toString());
+
+        Fraction testFraction2 = new Fraction(50, 22);
+
+        assertEquals("2 6/22", testFraction2.toString());
     }
 
     @Test

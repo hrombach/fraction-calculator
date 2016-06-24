@@ -28,6 +28,10 @@ public class Fraction {
     }
 
     public String toString() {
+        if (this.numerator > this.denominator) {
+            return (this.numerator / this.denominator) + " " +
+                    (this.numerator % this.denominator) + "/" + this.denominator;
+        }
         return this.numerator + "/" + this.denominator;
     }
 
@@ -41,8 +45,8 @@ public class Fraction {
 
     public Fraction div(Fraction f2) throws ZeroDenominatorException {
         Fraction result = new Fraction(
-                this.getNumerator() * f2.getDenominator(),
-                this.getDenominator() * f2.getNumerator()
+                this.getDenominator() * f2.getNumerator(),
+                this.getNumerator() * f2.getDenominator()
         );
         return result.simplify();
     }
