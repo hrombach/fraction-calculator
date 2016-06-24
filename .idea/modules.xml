@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/g18.AE03.java.calculator.iml" filepath="$PROJECT_DIR$/g18.AE03.java.calculator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fraction-calculator.iml" filepath="$PROJECT_DIR$/fraction-calculator.iml" />
     </modules>
   </component>
 </project>

@@ -8,9 +8,9 @@ import java.io.PrintStream;
 import static org.junit.Assert.*;
 
 /**
- * This file is part of de.m4dhouse.calculator.Tests, included in g18.AE03.java.calculator.
- * Created by hromb on 6/24/2016.
- * It is licensed under the GNU General Public License
+ * Project: fraction-calculator
+ * Package: de.m4dhouse.calculator.Tests
+ * Copyright: Hendrik Rombach, 2016
  */
 public class FractionTest {
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
