@@ -1,6 +1,6 @@
-package de.m4dhouse.calculator.Tests;
+package de.m4dhouse.calculator.tests;
 
-import de.m4dhouse.calculator.Fraction.Fraction;
+import de.m4dhouse.calculator.fraction.Fraction;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
 
 /**
  * Project: fraction-calculator
- * Package: de.m4dhouse.calculator.Tests
+ * Package: de.m4dhouse.calculator.tests
  * Copyright: Hendrik Rombach, 2016
  */
 public class FractionTest {
@@ -57,7 +57,7 @@ public class FractionTest {
         try {
             testFraction.setDenominator(0);
         } catch (Exception e) {
-            assertEquals("Fraction denominator cannot be 0.", e.getMessage());
+            assertEquals("fraction denominator cannot be 0.", e.getMessage());
         }
 
         testFraction.setDenominator(5);
