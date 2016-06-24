@@ -33,15 +33,38 @@ public class Fraction {
 
 
     public Fraction mul(Fraction f2) throws ZeroDenominatorException {
-        return new Fraction(this.getNumerator() * f2.getNumerator(), this.getDenominator() * f2.getDenominator());
+        Fraction result = new Fraction(
+                this.getNumerator() * f2.getNumerator(),
+                this.getDenominator() * f2.getDenominator()
+        );
+        return result.simplify();
     }
     public Fraction div(Fraction f2) throws ZeroDenominatorException {
-        return new Fraction(this.getNumerator() * f2.getDenominator(), this.getDenominator() * f2.getNumerator());
+        Fraction result = new Fraction(
+                this.getNumerator() * f2.getDenominator(),
+                this.getDenominator() * f2.getNumerator()
+        );
+        return result.simplify();
     }
 
     public Fraction add(Fraction f2) throws ZeroDenominatorException {
-        return new Fraction((this.getDenominator() * f2.getNumerator() + f2.getDenominator() *
+        Fraction result = new Fraction((this.getDenominator() * f2.getNumerator() + f2.getDenominator() *
                 this.getNumerator()), (this.getNumerator() * f2.getNumerator()));
+        return result.simplify();
+    }
+
+    public Fraction simplify() throws ZeroDenominatorException {
+        int gcd = GCD(this.denominator, this.numerator);
+
+        this.numerator = this.numerator / gcd;
+        this.denominator = this.denominator / gcd;
+
+        return this;
+    }
+
+    private int GCD(int a, int b) {
+        if (b == 0) return a;
+        return GCD(b, a % b);
     }
     
 
