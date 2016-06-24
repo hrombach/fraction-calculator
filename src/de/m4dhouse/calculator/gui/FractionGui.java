@@ -1,5 +1,4 @@
-package de.m4dhouse.calculator.Fraction;
-
+package de.m4dhouse.calculator.gui;
 import javax.swing.*;
 import java.awt.*;
 
@@ -17,6 +16,10 @@ public class FractionGui {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(new Dimension(800, 600));
         frame.setTitle("Fraction Calculator");
+
+        JPanel panel = new JPanel();
+
+        panel.setVisible(true);
 
         frame.setVisible(true);
 
