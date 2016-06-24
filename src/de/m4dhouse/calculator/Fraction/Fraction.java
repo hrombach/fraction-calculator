@@ -54,6 +54,14 @@ public class Fraction {
         return result.simplify();
     }
 
+    public Fraction sub(Fraction f2) throws ZeroDenominatorException {
+        Fraction result = new Fraction(
+                (this.getNumerator() * f2.getDenominator() - this.getDenominator() * f2.getNumerator()),
+                (this.getDenominator() * f2.getDenominator())
+        );
+        return result.simplify();
+    }
+
     public Fraction simplify() throws ZeroDenominatorException {
         int gcd = GCD(this.denominator, this.numerator);
 
