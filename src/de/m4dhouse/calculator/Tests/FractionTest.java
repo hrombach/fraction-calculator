@@ -1,6 +1,8 @@
 package de.m4dhouse.calculator.tests;
 
 import de.m4dhouse.calculator.fraction.Fraction;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
@@ -17,13 +19,13 @@ public class FractionTest {
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
 
-    @org.junit.Before
+    @Before
     public void setUp() throws Exception {
         System.setOut(new PrintStream(outContent));
         System.setErr(new PrintStream(errContent));
     }
 
-    @org.junit.After
+    @After
     public void tearDown() throws Exception {
         System.setErr(null);
         System.setOut(null);
