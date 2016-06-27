@@ -16,6 +16,7 @@ import static org.junit.Assert.assertEquals;
  * Copyright: Hendrik Rombach, 2016
  */
 public class FractionTest {
+
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
 
