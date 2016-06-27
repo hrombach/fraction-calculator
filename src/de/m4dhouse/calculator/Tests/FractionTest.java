@@ -38,7 +38,7 @@ public class FractionTest {
 
         Fraction resultFraction = testFraction1.mul(testFraction2);
 
-        assertEquals(new Fraction(8, 15).toString(), resultFraction.toString());
+        assertEquals("8/15", resultFraction.toString());
     }
 
     @Test
