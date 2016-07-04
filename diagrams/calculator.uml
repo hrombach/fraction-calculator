@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>de.m4dhouse.calculator</OriginalElement>
+  <nodes>
+    <node x="76.0" y="754.0">de.m4dhouse.calculator.tests.FractionTest</node>
+    <node x="0.0" y="183.0">de.m4dhouse.calculator.Main</node>
+    <node x="723.0" y="240.0">de.m4dhouse.calculator.fraction.ZeroDenominatorException</node>
+    <node x="229.0" y="160.0">de.m4dhouse.calculator.fraction.Fraction</node>
+    <node x="914.0" y="0.0">java.lang.Exception</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="de.m4dhouse.calculator.tests.FractionTest" target="de.m4dhouse.calculator.fraction.Fraction">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="de.m4dhouse.calculator.fraction.ZeroDenominatorException" target="java.lang.Exception">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="de.m4dhouse.calculator.fraction.Fraction" target="de.m4dhouse.calculator.fraction.ZeroDenominatorException">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="de.m4dhouse.calculator.Main" target="de.m4dhouse.calculator.fraction.Fraction">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.6743421052631579" x="610.0" y="598.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
