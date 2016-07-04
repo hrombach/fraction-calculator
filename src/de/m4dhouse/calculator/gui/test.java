@@ -29,9 +29,6 @@ public class test {
         frame.setContentPane(new test().panel1);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
-        frame.setDefaultLookAndFeelDecorated(true);
-
-        calculateButton
 
         frame.setVisible(true);
     }
