@@ -2,6 +2,9 @@ package de.m4dhouse.calculator;
 
 import de.m4dhouse.calculator.fraction.Fraction;
 
+import javax.swing.*;
+import java.util.Scanner;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -27,6 +30,7 @@ public class Main {
             System.out.println("Wählen Sie den ersten Zähler und Nenner");
             System.out.print("Zähler 1: "); if (sc.hasNextInt()){x1 = sc.nextInt();}
             System.out.print("Nenner 1: "); if (sc.hasNextInt()){y1 = sc.nextInt();}
+            System.out.println();
 
             System.out.println("Wählen Sie den zweiten Zähler und Nenner");
             System.out.print("Zähler 2: "); if (sc.hasNextInt()){x2 = sc.nextInt();}
