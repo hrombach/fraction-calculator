@@ -44,9 +44,13 @@ public class Fraction {
      */
     @Override
     public String toString() {
-        if (this.numerator > this.denominator) {
-            return (this.numerator / this.denominator) + " " +
-                   (this.numerator % this.denominator) + "/" + this.denominator;
+        if (this.numerator >= this.denominator) {
+            String returnString = String.valueOf(this.numerator / this.denominator);
+            int modulo = (this.numerator % this.denominator);
+            if (modulo > 0) {
+                returnString += " " + modulo + "/" + this.denominator;
+            }
+            return returnString;
         }
         return this.numerator + "/" + this.denominator;
     }

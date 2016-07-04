@@ -2,11 +2,23 @@ package de.m4dhouse.calculator;
 
 import de.m4dhouse.calculator.fraction.Fraction;
 
-import java.util.Scanner;
-
 public class Main {
 
     public static void main(String[] args) {
+        boolean guimode = false;
+        for (String arg : args) {
+            if (arg.equals("guimode")) {
+                guimode = true;
+            }
+        }
+        if (guimode) {
+            JOptionPane.showMessageDialog(
+                    new JFrame(),
+                    "GUI Mode is not yet ready.",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE
+                                         );
+        }
         try {
             Scanner sc = new Scanner(System.in);
             int x1 = 0, x2 = 0 , y1 = 0, y2 = 0;
