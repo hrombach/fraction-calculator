@@ -1,11 +1,14 @@
 package de.m4dhouse.calculator.tests;
 
 import de.m4dhouse.calculator.fraction.Fraction;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Project: fraction-calculator
@@ -13,45 +16,96 @@ import static org.junit.Assert.*;
  * Copyright: Hendrik Rombach, 2016
  */
 public class FractionTest {
+
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
 
-    @org.junit.Before
+    @Before
     public void setUp() throws Exception {
         System.setOut(new PrintStream(outContent));
         System.setErr(new PrintStream(errContent));
     }
 
-    @org.junit.After
+    @After
     public void tearDown() throws Exception {
         System.setErr(null);
         System.setOut(null);
     }
 
-    @org.junit.Test
+    @Test
+    public void mul() throws Exception {
+        Fraction testFraction1 = new Fraction(2, 5);
+        Fraction testFraction2 = new Fraction(4, 3);
+
+        Fraction resultFraction = testFraction1.mul(testFraction2);
+
+        assertEquals("8/15", resultFraction.toString());
+    }
+
+    @Test
+    public void div() throws Exception {
+        Fraction testFraction2 = new Fraction(2, 6);
+        Fraction testFraction1 = new Fraction(1, 4);
+
+        Fraction resultFraction = testFraction1.div(testFraction2);
+
+        assertEquals("1 1/3", resultFraction.toString());
+    }
+
+    @Test
+    public void simplify() throws Exception {
+        Fraction testFraction = new Fraction(86, 360);
+
+        assertEquals("43/180", testFraction.simplify().toString());
+    }
+
+    @Test
+    public void add() throws Exception {
+        Fraction testFraction1 = new Fraction(2, 6);
+        Fraction testFraction2 = new Fraction(1, 4);
+
+        Fraction resultFraction = testFraction1.add(testFraction2);
+
+        assertEquals("7/12", resultFraction.toString());
+    }
+
+    @Test
+    public void sub() throws Exception {
+        Fraction testFraction1 = new Fraction(2, 6);
+        Fraction testFraction2 = new Fraction(1, 4);
+
+        Fraction resultFraction = testFraction1.sub(testFraction2);
+
+        assertEquals("1/12", resultFraction.toString());
+    }
+
+    @Test
     public void display() throws Exception {
-        Fraction testFraction = new Fraction(5, 4);
+        Fraction testFraction = new Fraction(4, 6);
         testFraction.display();
 
-        assertEquals("5/4\r\n", outContent.toString());
+        assertEquals("4/6\r\n", outContent.toString());
     }
 
-    @org.junit.Test
+    @Test
     public void testToString() throws Exception {
-        Fraction testFraction = new Fraction(5, 4);
-        String fractionString = testFraction.toString();
+        Fraction testFraction = new Fraction(3, 4);
 
-        assertEquals("Franction(5,4) should be printed as \"5/4\"" ,"5/4", fractionString);
+        assertEquals("Franction(3,4) should be printed as \"3/4\"", "3/4", testFraction.toString());
+
+        Fraction testFraction2 = new Fraction(50, 22);
+
+        assertEquals("2 6/22", testFraction2.toString());
     }
 
-    @org.junit.Test
+    @Test
     public void getDenominator() throws Exception {
         Fraction testFraction = new Fraction(5, 4);
 
         assertEquals("getDenominator() should return int(4)", 4, testFraction.getDenominator());
     }
 
-    @org.junit.Test
+    @Test
     public void setDenominator() throws Exception {
         Fraction testFraction = new Fraction();
         try {
@@ -64,14 +118,14 @@ public class FractionTest {
         assertEquals("Denominator should now be int(5)", 5, testFraction.getDenominator());
     }
 
-    @org.junit.Test
+    @Test
     public void getNumerator() throws Exception {
         Fraction testFraction = new Fraction(4, 3);
 
         assertEquals("getNumberator should return int(4)", 4, testFraction.getNumerator());
     }
 
-    @org.junit.Test
+    @Test
     public void setNumerator() throws Exception {
         Fraction testFraction = new Fraction();
         testFraction.setNumerator(5);

@@ -1,19 +1,28 @@
 package de.m4dhouse.calculator.fraction;
 
 /**
- * This file is part of de.m4dhouse.calculator.fraction, included in g18.AE03.java.calculator.
- * Created by hromb on 6/24/2016.
- * It is licensed under the GNU General Public License
+ * Project: fraction-calculator
+ * Package: de.m4dhouse.calculator.fraction
+ * Copyright: Hendrik Rombach, 2016
  */
 public class Fraction {
-    private int numerator;
-    private int denominator;
 
-    public Fraction() {
-        this.numerator = 0;
-        this.denominator = 1;
-    }
+    private int numerator   = 0;
+    private int denominator = 1;
 
+    /**
+     * Default constructor for simple initialization
+     */
+    public Fraction() {}
+
+    /**
+     * Constructor with custom numerator/denominator initialization
+     *
+     * @param numerator   - fraction numerator
+     * @param denominator - fraction denominator, may not be 0
+     *
+     * @throws ZeroDenominatorException
+     */
     public Fraction(int numerator, int denominator) throws ZeroDenominatorException {
         if (denominator == 0) {
             throw new ZeroDenominatorException();
@@ -23,27 +32,117 @@ public class Fraction {
         this.denominator = denominator;
     }
 
+    /**
+     * Prints the fraction to standard output
+     */
     public void display() {
         System.out.println(toString());
     }
 
+    /**
+     * @return String - stringified fraction
+     */
+    @Override
     public String toString() {
+        if (this.numerator > this.denominator) {
+            return (this.numerator / this.denominator) + " " +
+                   (this.numerator % this.denominator) + "/" + this.denominator;
+        }
         return this.numerator + "/" + this.denominator;
     }
 
-
+    /**
+     * Fraction multiplication.
+     *
+     * @param f2 - Fraction to multiply with.
+     *
+     * @return simplified Fraction result.
+     *
+     * @throws ZeroDenominatorException if the operation (somehow) results in a zero denominator value.
+     */
     public Fraction mul(Fraction f2) throws ZeroDenominatorException {
-        return new Fraction(this.getNumerator() * f2.getNumerator(), this.getDenominator() * f2.getDenominator());
-    }
-    public Fraction div(Fraction f2) throws ZeroDenominatorException {
-        return new Fraction(this.getNumerator() * f2.getDenominator(), this.getDenominator() * f2.getNumerator());
+        Fraction result = new Fraction(
+                this.getNumerator() * f2.getNumerator(),
+                this.getDenominator() * f2.getDenominator()
+        );
+        return result.simplify();
     }
 
-    public Fraction add(Fraction f2) throws ZeroDenominatorException {
-        return new Fraction((this.getDenominator() * f2.getNumerator() + f2.getDenominator() *
-                this.getNumerator()), (this.getNumerator() * f2.getNumerator()));
+    /**
+     * Fraction division
+     *
+     * @param f2 fraction to divide by.
+     *
+     * @return simplified Fraction result.
+     *
+     * @throws ZeroDenominatorException if the operation (somehow) results in a zero denominator value.
+     */
+    public Fraction div(Fraction f2) throws ZeroDenominatorException {
+        Fraction result = new Fraction(
+                this.getDenominator() * f2.getNumerator(),
+                this.getNumerator() * f2.getDenominator()
+        );
+        return result.simplify();
     }
-    
+
+    /**
+     * Fraction addition.
+     *
+     * @param f2 fraction to add.
+     *
+     * @return simplified result fraction.
+     *
+     * @throws ZeroDenominatorException if the operation (somehow) results in a zero denominator value.
+     */
+    public Fraction add(Fraction f2) throws ZeroDenominatorException {
+        Fraction result = new Fraction(
+                (this.getNumerator() * f2.getDenominator() + f2.getNumerator() * this.getDenominator()),
+                (this.getDenominator() * f2.getDenominator())
+        );
+        return result.simplify();
+    }
+
+    /**
+     * @param f2 fraction to subtract.
+     *
+     * @return simplified result fraction
+     *
+     * @throws ZeroDenominatorException
+     */
+    public Fraction sub(Fraction f2) throws ZeroDenominatorException {
+        Fraction result = new Fraction(
+                (this.getNumerator() * f2.getDenominator() - this.getDenominator() * f2.getNumerator()),
+                (this.getDenominator() * f2.getDenominator())
+        );
+        return result.simplify();
+    }
+
+    /**
+     * @return simplified fraction
+     *
+     * @throws ZeroDenominatorException
+     */
+    public Fraction simplify() throws ZeroDenominatorException {
+        int gcd = GCD(this.denominator, this.numerator);
+
+        this.numerator = this.numerator / gcd;
+        this.denominator = this.denominator / gcd;
+
+        return this;
+    }
+
+    /**
+     * GCD - Find greatest common denominator. (Recursive method call)
+     *
+     * @param a First number
+     * @param b Second number
+     *
+     * @return greatest common denominator
+     */
+    private int GCD(int a, int b) {
+        if (b == 0) return a;
+        return GCD(b, a % b);
+    }
 
     public int getDenominator() {
         return denominator;

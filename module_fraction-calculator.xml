@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_fraction-calculator" default="compile.module.fraction-calculator">
+  <dirname property="module.fraction-calculator.basedir" file="${ant.file.module_fraction-calculator}"/>
+  
+  <property name="module.jdk.home.fraction-calculator" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.fraction-calculator" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.fraction-calculator" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.fraction-calculator" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
+  
+  <property name="fraction-calculator.output.dir" value="${module.fraction-calculator.basedir}/out/production/fraction-calculator"/>
+  <property name="fraction-calculator.testoutput.dir" value="${module.fraction-calculator.basedir}/out/test/fraction-calculator"/>
+  
+  <path id="fraction-calculator.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="fraction-calculator.module.production.classpath">
+    <path refid="${module.jdk.classpath.fraction-calculator}"/>
+    <pathelement location="${idea.home}/lib/hamcrest-core-1.3.jar"/>
+    <pathelement location="${idea.home}/lib/junit-4.12.jar"/>
+  </path>
+  
+  <path id="fraction-calculator.runtime.production.module.classpath">
+    <pathelement location="${fraction-calculator.output.dir}"/>
+    <pathelement location="${idea.home}/lib/hamcrest-core-1.3.jar"/>
+    <pathelement location="${idea.home}/lib/junit-4.12.jar"/>
+  </path>
+  
+  <path id="fraction-calculator.module.classpath">
+    <path refid="${module.jdk.classpath.fraction-calculator}"/>
+    <pathelement location="${fraction-calculator.output.dir}"/>
+    <pathelement location="${idea.home}/lib/hamcrest-core-1.3.jar"/>
+    <pathelement location="${idea.home}/lib/junit-4.12.jar"/>
+    <pathelement location="${idea.home}/lib/hamcrest-core-1.3.jar"/>
+    <pathelement location="${idea.home}/lib/junit-4.12.jar"/>
+  </path>
+  
+  <path id="fraction-calculator.runtime.module.classpath">
+    <pathelement location="${fraction-calculator.testoutput.dir}"/>
+    <pathelement location="${fraction-calculator.output.dir}"/>
+    <pathelement location="${idea.home}/lib/hamcrest-core-1.3.jar"/>
+    <pathelement location="${idea.home}/lib/junit-4.12.jar"/>
+    <pathelement location="${idea.home}/lib/hamcrest-core-1.3.jar"/>
+    <pathelement location="${idea.home}/lib/junit-4.12.jar"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.fraction-calculator">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.fraction-calculator">
+    <patternset refid="excluded.from.module.fraction-calculator"/>
+  </patternset>
+  
+  <path id="fraction-calculator.module.sourcepath">
+    <dirset dir="${module.fraction-calculator.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.fraction-calculator" depends="compile.module.fraction-calculator.production,compile.module.fraction-calculator.tests" description="Compile module fraction-calculator"/>
+  
+  <target name="compile.module.fraction-calculator.production" depends="register.custom.compilers" description="Compile module fraction-calculator; production classes">
+    <mkdir dir="${fraction-calculator.output.dir}"/>
+    <javac2 destdir="${fraction-calculator.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.fraction-calculator}/javac">
+      <compilerarg line="${compiler.args.fraction-calculator}"/>
+      <bootclasspath refid="fraction-calculator.module.bootclasspath"/>
+      <classpath refid="fraction-calculator.module.production.classpath"/>
+      <src refid="fraction-calculator.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.fraction-calculator"/>
+    </javac2>
+    
+    <copy todir="${fraction-calculator.output.dir}">
+      <fileset dir="${module.fraction-calculator.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.fraction-calculator.tests" depends="register.custom.compilers,compile.module.fraction-calculator.production" description="compile module fraction-calculator; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.fraction-calculator" description="cleanup module">
+    <delete dir="${fraction-calculator.output.dir}"/>
+    <delete dir="${fraction-calculator.testoutput.dir}"/>
+  </target>
+</project>
