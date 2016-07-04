@@ -20,6 +20,7 @@ public class Main {
                     "Error",
                     JOptionPane.ERROR_MESSAGE
                                          );
+            System.exit(0);
         }
         try {
             Fraction fraction = new Fraction(1, 2);
