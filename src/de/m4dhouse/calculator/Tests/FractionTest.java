@@ -96,6 +96,9 @@ public class FractionTest {
         Fraction testFraction2 = new Fraction(50, 22);
 
         assertEquals("2 6/22", testFraction2.toString());
+
+        Fraction testFraction3 = new Fraction(1,1);
+        assertEquals("1", testFraction3.toString());
     }
 
     @Test
