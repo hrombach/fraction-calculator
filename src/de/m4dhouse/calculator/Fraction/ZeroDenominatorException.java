@@ -6,6 +6,7 @@ package de.m4dhouse.calculator.fraction;
  * It is licensed under the GNU General Public License
  */
 class ZeroDenominatorException extends Exception {
+
     ZeroDenominatorException() {
         super("fraction denominator cannot be 0.");
     }
