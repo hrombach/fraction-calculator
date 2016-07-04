@@ -18,6 +18,7 @@ public class Main {
                     "Error",
                     JOptionPane.ERROR_MESSAGE
                                          );
+            System.exit(0);
         }
         try {
             Scanner sc = new Scanner(System.in);
