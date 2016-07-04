@@ -1,4 +1,5 @@
 package de.m4dhouse.calculator.gui;
+
 import javax.swing.*;
 import java.awt.*;
 
