@@ -100,7 +100,6 @@ public class CalculatorGui implements ActionListener{
             try{
                 Fraction f1 = new Fraction(Integer.parseInt(textField1.getText()), Integer.parseInt(textField2.getText()));
                 Fraction f2 = new Fraction(Integer.parseInt(textField3.getText()), Integer.parseInt(textField4.getText()));
-                System.out.println(comboBox1.getSelectedIndex());
                 Fraction res;
                 switch (comboBox1.getSelectedIndex()){
                     case 0: res = f1.add(f2); break;
