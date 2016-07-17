@@ -1,5 +1,7 @@
 package de.m4dhouse.calculator.gui;
 
+import de.m4dhouse.calculator.fraction.Fraction;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -19,6 +21,8 @@ public class CalculatorGui implements ActionListener{
     private JTextField textField3;
     private JTextField textField4;
     private JPanel panel1;
+    private JTextField textField1;
+    private JLabel resL1;
 
     public static void main(String[] args ){
         JFrame frame = new JFrame();
@@ -30,7 +34,6 @@ public class CalculatorGui implements ActionListener{
     }
 
     public CalculatorGui() {
-        this.getButton1().addActionListener(this);
         button1.addActionListener(this);
 
     }
@@ -83,10 +86,34 @@ public class CalculatorGui implements ActionListener{
         this.panel1 = panel1;
     }
 
+    public JTextField getTextField1() {
+        return textField1;
+    }
+
+    public void setTextField1(JTextField textField1) {
+        this.textField1 = textField1;
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == this.getButton1()){
-         //Calculate
+            try{
+                Fraction f1 = new Fraction(Integer.parseInt(textField1.getText()), Integer.parseInt(textField2.getText()));
+                Fraction f2 = new Fraction(Integer.parseInt(textField3.getText()), Integer.parseInt(textField4.getText()));
+                System.out.println(comboBox1.getSelectedIndex());
+                Fraction res;
+                switch (comboBox1.getSelectedIndex()){
+                    case 0: res = f1.add(f2); break;
+                    case 1: res = f1.sub(f2); break;
+                    case 2: res = f1.mul(f2); break;
+                    case 3: res = f1.div(f2); break;
+                    default: res = new Fraction(1,1);
+                }
+                resL1.setText(res.toString());
+
+            }catch (Exception excep) {
+                System.out.println(excep.getMessage());
+            }
 
         }
     }
