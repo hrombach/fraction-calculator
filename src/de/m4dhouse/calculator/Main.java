@@ -40,12 +40,11 @@ public class Main {
                 System.out.println("welche Operation möchten sie durchführen?");
 
 
-                String op = "";
+                String op;
 
                 System.out.println("| + | - | * | / |");
-                String currOp = "";
                 op = sc.next();
-                Fraction y = new Fraction();
+                Fraction y;
 
 
                 y = op.equals("+") ?

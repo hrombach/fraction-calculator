@@ -21,7 +21,7 @@ public class Fraction {
      * @param numerator   - fraction numerator
      * @param denominator - fraction denominator, may not be 0
      *
-     * @throws ZeroDenominatorException
+     * @throws ZeroDenominatorException if Denominator would be set to 0
      */
     public Fraction(int numerator, int denominator) throws ZeroDenominatorException {
         if (denominator == 0) {
@@ -111,7 +111,7 @@ public class Fraction {
      *
      * @return simplified result fraction
      *
-     * @throws ZeroDenominatorException
+     * @throws ZeroDenominatorException if Denominator would be set to 0
      */
     public Fraction sub(Fraction f2) throws ZeroDenominatorException {
         Fraction result = new Fraction(
@@ -124,7 +124,7 @@ public class Fraction {
     /**
      * @return simplified fraction
      *
-     * @throws ZeroDenominatorException
+     * @throws ZeroDenominatorException if Denominator would be set to 0
      */
     public Fraction simplify() throws ZeroDenominatorException {
         int gcd = GCD(this.denominator, this.numerator);
